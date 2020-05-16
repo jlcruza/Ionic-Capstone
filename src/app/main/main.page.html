@@ -1,0 +1,75 @@
+<ion-content>
+  <div id="banner">
+
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <ion-button (click)="goToActors()" class="nav-link text-white">Actors</ion-button>
+      </li>
+      <li class="nav-item">
+        <ion-button (click)="goToMovies()" class="nav-link text-white">Movies</ion-button>
+      </li>
+      <li class="nav-item">
+        <ion-button (click)="goToCast()" class="nav-link text-white">Cast</ion-button>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" [href]="loginURL">
+          Account
+        </a>
+      </li>
+    </ul>
+
+    <p class="display-1 text-white text-center">Movie Center</p>
+    <p class="display-4 text-white text-center lead">The perfect movie
+      manager</p>
+  </div>
+  <div id="services">
+
+    <!-- Actors Manager -->
+    <div class="container full-width padding-30 no-margin">
+      <div class="row full-width no-margin">
+        <div class="col-12 col-lg-8 order-1">
+          <p class="h1 text-white">Manage Actors</p>
+          <hr class="white-line">
+          <p class="lead text-white">Adapt actors information to
+            their current status as well as access to all the
+            movies information they has taken part in</p>
+        </div>
+        <div class="col-12 col-lg-4 order-2">
+          <img class="sample-img" src="../../assets/sample-actor.jpg">
+        </div>
+      </div>
+    </div>
+
+    <!-- Movie Manager -->
+    <div class="container full-width padding-30 no-margin">
+      <div class="row full-width no-margin">
+        <div class="col-12 col-lg-8 order-2">
+          <p class="h1 text-white">Manage Movies</p>
+          <hr class="white-line">
+          <p class="lead text-white">Help the movie database grow
+            and provide to the world an accurate collection of
+            movie information.</p>
+        </div>
+        <div class="col-12 col-lg-4 order-1">
+          <img class="sample-img" src="../../assets/sample-movie.jpg">
+        </div>
+      </div>
+    </div>
+
+    <!-- Cast Manager -->
+    <div class="container full-width padding-30no-margin">
+      <div class="row full-width no-margin">
+        <div class="col-12">
+          <p class="h1 text-white text-center">Control Casting</p>
+          <hr class="white-line">
+          <p class="lead text-white text-center">
+            Everyone needs to know all about the actors behind
+            their favorite movies and you can help them through
+            this platform.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

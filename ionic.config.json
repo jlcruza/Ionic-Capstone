@@ -1,5 +1,7 @@
 {
   "name": "movieManager",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

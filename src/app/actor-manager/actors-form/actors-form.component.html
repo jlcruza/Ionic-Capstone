@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="isNew">New Actor</ion-title>
+    <ion-title *ngIf="!isNew">Edit Actor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="actor">
+
+    <form (ngSubmit)="logForm()">
+      <ion-item>
+        <ion-label>Actor's Name</ion-label>
+        <ion-input type="text" [(ngModel)]="actor.name" name="name" placeholder="Write actor's name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Actor's Age</ion-label>
+        <ion-input type="number" [(ngModel)]="actor.age" name="age" placeholder="Enter actor's age"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Actor's Gender</ion-label>
+        <!-- <ion-input type="text" [(ngModel)]="actor.gender" name="name" placeholder="Write actor's name"></ion-input> -->
+        <ion-select [(ngModel)]="actor.gender" name="gender" placeholder="Select actor's gender">
+          <ion-select-option value="Female">Female</ion-select-option>
+          <ion-select-option value="Male">Male</ion-select-option>
+          <ion-select-option value="Other">Other</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Actor's Picture Link</ion-label>
+        <ion-input type="text" [(ngModel)]="actor.picture_link" name="picture_link" placeholder="Write actor's picture_link"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Actor's Bio</ion-label>
+        <ion-input type="text" [(ngModel)]="actor.bio" name="bio" placeholder="Write actor's bio"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="closeModal()" color="medium">Cancel</ion-button>
+      <ion-button 
+        [disabled]="!auth.can('patch:actors') || !auth.can('create:actors')"
+        (click)="saveClicked()"
+        color="success">Save</ion-button>
+
+    </form>
+
+    <div *ngIf="auth.can('read:actors')">
+      <p *ngFor="let actor of Object.keys(actors.movies)"> Movie: {{actors.movies[actor].title}}, Released: {{actors.movies[actor].released}}</p>
+    </div>
+
+</ion-content>

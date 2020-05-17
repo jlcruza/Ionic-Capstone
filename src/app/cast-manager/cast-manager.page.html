@@ -1,9 +1,84 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>cast-manager</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content style="max-height: 30vh !important;">
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <ion-button (click)="goToMain()" class="nav-link text-white active">Home</ion-button>
+    </li>
+    <li class="nav-item">
+      <ion-button (click)="goToActors()" class="nav-link text-white active">Actors</ion-button>
+    </li>
+    <li class="nav-item">
+      <ion-button (click)="goToMovies()" class="nav-link text-white">Movies</ion-button>
+    </li>
+    <li class="nav-item">
+      <ion-button (click)="goToCast()" class="nav-link text-white">Cast</ion-button>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" [href]="loginURL">
+        Account
+      </a>
+    </li>
+  </ul>
+
+  <div>
+    <p class="display-4 text-center text-white">
+      Casting
+    </p>
+  </div>
+</ion-content>
 
 <ion-content>
+
+  <p class="h1 text-white text-center">Modify Casting</p>
+
+  <form (ngSubmit)="logForm()">
+
+    <ion-item>
+      <ion-label>Select a Movie</ion-label>
+      <ion-select name="movies_id">
+
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-list>
+        <ion-radio-group (ionChange)="getActorsList($event)">
+          <ion-list-header>
+            <ion-label>
+              Select Action to Perform
+            </ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label>Add Actor to Movie</ion-label>
+            <ion-radio value="Add"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Delete Actor from Movie</ion-label>
+            <ion-radio value="Delete"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </ion-item>
+
+    <ion-item *ngIf="addActor">
+      <ion-label>Current Actors</ion-label>
+      <ion-select name="actors_id">
+
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="!addActor">
+      <ion-label>Actors Not in Movie</ion-label>
+      <ion-select name="actors_id">
+
+      </ion-select>
+    </ion-item>
+
+
+    <!-- <ion-button (click)="closeModal()" color="medium">Cancel</ion-button>
+          <ion-button
+            [disabled]="!auth.can('patch:actors') || !auth.can('create:actors')"
+            (click)="saveClicked()"
+            color="success">Save</ion-button> -->
+  </form>
 
 </ion-content>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-cast-manager',
@@ -7,9 +8,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CastManagerPage implements OnInit {
 
-  constructor() { }
+  addActor:Boolean = true;
+
+  constructor(public nav: NavController) { }
 
   ngOnInit() {
+  }
+
+  getActorsList($event){
+    console.log($event.target.value);
+    let option = $event.target.value;
+    this.addActor = (option == "Add")
+  }
+
+
+  goToMain() {
+    this.nav.navigateForward('/main')
+  }
+
+  goToActors() {
+    this.nav.navigateForward('/actor-manager')
+  }
+
+  goToMovies() {
+    this.nav.navigateForward('/movie-manager')
+  }
+
+  goToCast() {
+    this.nav.navigateForward('/cast-manager')
   }
 
 }

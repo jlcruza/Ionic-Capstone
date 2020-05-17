@@ -1,7 +1,61 @@
-<ion-content>
+<ion-content style="max-height: 30vh !important;">
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <ion-button (click)="goToMain()" class="nav-link text-white active">Home</ion-button>
+    </li>
+    <li class="nav-item">
+      <ion-button (click)="goToActors()" class="nav-link text-white active">Actors</ion-button>
+    </li>
+    <li class="nav-item">
+      <ion-button (click)="goToMovies()" class="nav-link text-white">Movies</ion-button>
+    </li>
+    <li class="nav-item">
+      <ion-button (click)="goToCast()" class="nav-link text-white">Cast</ion-button>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" [href]="loginURL">
+        Account
+      </a>
+    </li>
+  </ul>
+  
   <div>
     <p class="display-4 text-center text-white">
       Actors
     </p>
   </div>
+</ion-content>
+
+<ion-content *ngIf="actors && actors.items">
+  <div style="display: flex; justify-content: center; padding-top: 20px;">
+    <ion-card
+      style="align-items: center; display: flex; flex-direction: column; cursor:
+      pointer; max-height: 35vh !important;"
+      *ngFor="let actor of Object.keys(actors.items)"
+      (click)="openForm(actors.items[actor])">
+      
+
+
+      <ion-card-header>
+        <img src="{{actors.items[actor].picture_link}}" style="height: 20vh;">
+        <ion-card-title>{{actors.items[actor].name}}</ion-card-title>
+        <ion-card-title>{{actors.items[actor].age}}</ion-card-title>
+        <ion-button *ngIf="auth.can('delete:actors')" color='danger' (click)="deleteActor(actors.items[actor])">Delete</ion-button>
+      </ion-card-header>
+    </ion-card>
+    <ion-card
+      style="opacity: .7; align-items: center; display: flex; flex-direction:
+      column; cursor: pointer;"
+      *ngIf="auth.can('create:actors')"
+      (click)="openForm()">
+      <ion-card-header>
+        <ion-card-title>Add Actor</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content style="color:grey; font-size: 256%;">
+        <ion-icon name="add-circle"></ion-icon>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
 </ion-content>

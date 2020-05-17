@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="isNew">New Movie</ion-title>
+    <ion-title *ngIf="!isNew">Edit Movie</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="movie">
+
+    <form (ngSubmit)="logForm()">
+      <ion-item>
+        <ion-label>Movie's Title</ion-label>
+        <ion-input type="text" [(ngModel)]="movie.title" name="title" placeholder="Write movie's title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Movie's Release date</ion-label>
+        <ion-input type="date" [(ngModel)]="movie.released" name="released" placeholder="Enter release date"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Movie's Picture Link</ion-label>
+        <ion-input type="text" [(ngModel)]="movie.picture_link" name="picture_link" placeholder="Write movie's picture_link"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Movie's Synopsis</ion-label>
+        <ion-input type="text" [(ngModel)]="movie.synopsis" name="synopsis" placeholder="Write movie's synopsis"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="closeModal()" color="medium">Cancel</ion-button>
+      <ion-button 
+        [disabled]="!auth.can('patch:movies') || !auth.can('create:movies')"
+        (click)="saveClicked()"
+        color="success">Save</ion-button>
+
+    </form>
+    <div *ngIf="auth.can('read:movies')">
+      <p *ngFor="let movie of Object.keys(movies.actors)"> Actors: {{movies.actors[movie].name}}, Age: {{movies.actors[movie].age}}</p>
+    </div>
+</ion-content>

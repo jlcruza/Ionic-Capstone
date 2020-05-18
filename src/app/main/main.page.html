@@ -2,13 +2,13 @@
   <div id="banner">
 
     <ul class="nav justify-content-end">
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="auth.can('read:actors')">
         <ion-button (click)="goToActors()" class="nav-link text-white">Actors</ion-button>
       </li>
-      <li class="nav-item">
+      <li class="nav-item"  *ngIf="auth.can('read:movies')">
         <ion-button (click)="goToMovies()" class="nav-link text-white">Movies</ion-button>
       </li>
-      <li class="nav-item">
+      <li class="nav-item"  *ngIf="auth.can('patch:movies')">
         <ion-button (click)="goToCast()" class="nav-link text-white">Cast</ion-button>
       </li>
       <li class="nav-item">
@@ -27,14 +27,14 @@
     <!-- Actors Manager -->
     <div class="container full-width padding-30 no-margin">
       <div class="row full-width no-margin">
-        <div class="col-12 col-lg-8 order-1">
+        <div class="col-12 col-lg-8 order-2 order-lg-1">
           <p class="h1 text-white">Manage Actors</p>
           <hr class="white-line">
           <p class="lead text-white">Adapt actors information to
             their current status as well as access to all the
             movies information they has taken part in</p>
         </div>
-        <div class="col-12 col-lg-4 order-2">
+        <div class="col-12 col-lg-4 order-1 order-lg-2">
           <img class="sample-img" src="../../assets/sample-actor.jpg">
         </div>
       </div>

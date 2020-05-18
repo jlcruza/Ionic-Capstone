@@ -88,7 +88,7 @@ export class ActorsService {
 
   getActorMovies(id) {
     console.log(this.auth.activeJWT());
-    if (this.auth.can('read:actors')) {
+    if (this.auth.can('read:movies')) {
       this.http.get(this.url + '/actors/' + id + '/cast', this.getHeaders())
         .subscribe((res: any) => {
           console.log("RES", res);

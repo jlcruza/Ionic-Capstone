@@ -3,13 +3,13 @@
     <li class="nav-item">
       <ion-button (click)="goToMain()" class="nav-link text-white active">Home</ion-button>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="auth.can('read:actors')">
       <ion-button (click)="goToActors()" class="nav-link text-white active">Actors</ion-button>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="auth.can('read:movies')">
       <ion-button (click)="goToMovies()" class="nav-link text-white">Movies</ion-button>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="auth.can('patch:movies')">
       <ion-button (click)="goToCast()" class="nav-link text-white">Cast</ion-button>
     </li>
     <li class="nav-item">
@@ -34,13 +34,13 @@
 
     <ion-item>
       <ion-label>Select a Movie</ion-label>
-      <ion-select name="movies_id">
-
+      <ion-select [(ngModel)]="movie"  name="movies_id" (ionChange)="onMovieChange($event)">
+        <ion-select-option *ngFor="let movie of Object.keys(cast.movieCollection)" value={{cast.movieCollection[movie].id}}>{{cast.movieCollection[movie].title}}</ion-select-option>
       </ion-select>
     </ion-item>
 
     <ion-item>
-      <ion-list>
+      <ion-list style="width: 100%;">
         <ion-radio-group (ionChange)="getActorsList($event)">
           <ion-list-header>
             <ion-label>
@@ -60,25 +60,24 @@
     </ion-item>
 
     <ion-item *ngIf="addActor">
-      <ion-label>Current Actors</ion-label>
-      <ion-select name="actors_id">
-
+      <ion-label>Actors Not in Movie</ion-label>
+      <ion-select [(ngModel)]="addActorID" name="actors_id">
+        <ion-select-option *ngFor="let actor of Object.keys(cast.actorCollection)" value={{cast.actorCollection[actor].id}}>{{cast.actorCollection[actor].name}}</ion-select-option>
       </ion-select>
     </ion-item>
 
     <ion-item *ngIf="!addActor">
-      <ion-label>Actors Not in Movie</ion-label>
-      <ion-select name="actors_id">
-
+      <ion-label>Current Actors</ion-label>
+      <ion-select [(ngModel)]="deleteActorID" name="actors_id">
+        <ion-select-option *ngFor="let actor of Object.keys(cast.actorCollection)" value={{cast.actorCollection[actor].id}}>{{cast.actorCollection[actor].name}}</ion-select-option>
       </ion-select>
     </ion-item>
 
 
-    <!-- <ion-button (click)="closeModal()" color="medium">Cancel</ion-button>
           <ion-button
-            [disabled]="!auth.can('patch:actors') || !auth.can('create:actors')"
+            [disabled]="!auth.can('read:actors') || !auth.can('read:movies')"
             (click)="saveClicked()"
-            color="success">Save</ion-button> -->
+            color="success">Submit</ion-button>
   </form>
 
 </ion-content>

@@ -1,0 +1,23 @@
+Based on Casting Agency
+
+API URL:
+https://jorge-casting-agency.herokuapp.com/
+
+
+Auth0 Login Page URL:
+https://casting-agency-capstone.auth0.com/authorize?audience=executive&response_type=token&client_id=o8j0f3DEN9v3URxAXn1o65vJorxZNLJ1&redirect_uri=http://localhost:8100
+
+
+Producer (High Level Permissions)
+	Email: 		ribere6048@reqaxv.com
+	Password:	Ribere6048
+
+
+Assistant (Low Level Permissions)
+	Email: 		zorkagapsu@enayu.com
+	Password:	Zorkagapsu6048
+
+
+Director (Mid Level Permissions)
+	Email: 		spyridon.archivaldo@andyes.net
+	Password:	Spyridon6048

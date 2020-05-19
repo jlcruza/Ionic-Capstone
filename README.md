@@ -10,11 +10,11 @@ This app serve as the frontend for the API uploaded at:
 This project requires the user have Ionic and node installed.
 
 To install all npm dependencies run the following command:
-''''
+```
 npm install
-''''
+```
 
 And to start the Ionic application, run
-''''
+```
 ionic serve
-''''
+```
